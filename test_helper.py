@@ -15,12 +15,13 @@ xboard_index_html = "file://" + os.getenv("HTML_FILEPATH")
 def get_first_accordian_class(browser):
     # FIXME - We need to add detailed logging so that users can get whats happening behind the scenes.
     btn, div_id = find_fist_accordian_btn_and_div(browser)
-    print(div_id)
+    print("div_id of first accordian" + div_id)
     btn.click()
+    print("Clicked on " + div_id + "now waiting for page to load")
     WebDriverWait(browser, 10).until(
         EC.visibility_of_element_located((By.ID, div_id)))
     ref_div = browser.find_element_by_id(div_id)
-    print(ref_div.get_attribute("class"))
+    print("class attribute associated with first accordian after click on expand-collapse" + ref_div.get_attribute("class"))
     return ref_div.get_attribute("class")
 
 
@@ -35,12 +36,14 @@ def find_fist_accordian_btn_and_div(browser):
 def find_all_accordian_btns(browser):
     load_xboard_page_and_wait(browser)
     buttons = browser.find_elements_by_xpath('//button')
+    print("accordian button ids:" + print(', '.join(buttons)) )
     return buttons, list(map(lambda btn: btn.get_attribute("data-target")[1:], buttons))
 
 
 def load_xboard_page_and_wait(browser):
     browser.get(xboard_index_html)
     WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn')))
+    print("loaded xboard page")
 
 
 def get_courosal_element_ids(div_name):
