@@ -33,10 +33,10 @@ class Test_Main(TestCase):
         print("clicked on next button, now waiting for next carousel item to load" + next_element_path)
         time.sleep(3)
         next_id, current_active_element = get_courosal_element_ids(accordian_div)
-        current_active_element_id = driver.find_element_by_xpath(current_active_element).get_attribute("id")
-        print("active element after clicking on next button (ref#1)" + current_active_element_id)
+        current_active_element = driver.find_element_by_xpath(current_active_element)
+        print("active element after clicking on next button (ref#1)" + current_active_element.get_attribute("id"))
         print("ref#1 and ref#2 should not be same")
-        self.assertNotEqual(active_element_id, current_active_element_id)
+        self.assertNotEqual(active_element.get_attribute('innerHTML'), current_active_element.get_attribute('innerHTML'))
 
 
     def test_accordian(self):
@@ -107,9 +107,13 @@ class Test_Main(TestCase):
         all_cards = driver.find_elements_by_xpath(cards_xpath)
         print("All card text:")
         self.print_text_values(all_cards)
-        print('''Above printed are card ids, out of which, there is one card related to MI and RCB,
-               the text in the card contains "Hello and Welcome", The card that has this message should be visible on load''')
-        filtered_cards = list(filter(lambda card_text : "Hello and welcome" in card_text.text, all_cards))
+        print('''Above printed are card ids, out of which, there is one card related to Coronavirus. The text starts with ,
+               "The number of coronavirus"
+               The card that has this message should be visible on load''')
+        filtered_cards = list(filter(lambda card_text : "The number of coronavirus" in card_text.text, all_cards))
+        visible_cards = list(filter(lambda card_text : card_text.is_displayed(), all_cards))
+        print("Visible card:")
+        self.print_text_values(visible_cards)
         print("number of cards in the html", len(filtered_cards))
         self.assertGreaterEqual(len(filtered_cards), 1)
         self.assertTrue(filtered_cards[0].is_displayed())
