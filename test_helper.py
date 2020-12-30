@@ -10,8 +10,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import os
 
-#xboard_index_html = "file://" + os.getenv("HTML_FILEPATH")
 xboard_index_html = "file:///mnt/g/crio.do/userrepo/sreejan147-me_buildout_xboard/index.html"
+xboard_index_html = "file://" + os.getenv("HTML_FILEPATH")
 
 def get_first_accordian_class(browser):
     # FIXME - We need to add detailed logging so that users can get whats happening behind the scenes.
