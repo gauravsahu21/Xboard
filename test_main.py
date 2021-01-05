@@ -14,6 +14,7 @@ class Test_Main(TestCase):
         options.add_argument("disable-infobars")
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-web-security")
         options.add_argument("--no-sandbox")
         webdriver_chrome = webdriver.Chrome(options=options)
         return webdriver_chrome
