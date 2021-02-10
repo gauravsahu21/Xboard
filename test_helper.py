@@ -10,8 +10,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import os
 
-xboard_index_html = "file:///mnt/g/crio.do/userrepo/--/index.html"
-xboard_index_html = "file://" + os.getenv("HTML_FILEPATH")
+xboard_index_html = "file:///mnt/g/crio.do/userrepo/suhaib0900-me_buildout_xboard/index.html"
+# xboard_index_html = "file://" + os.getenv("HTML_FILEPATH")
 
 def get_first_accordian_class(browser):
     # FIXME - We need to add detailed logging so that users can get whats happening behind the scenes.
@@ -31,7 +31,6 @@ def get_first_accordian_class(browser):
 
 def find_fist_accordian_btn_and_div(browser):
     browser.get(xboard_index_html)
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn')))
     WebDriverWait(browser, 10).until(lambda driver: len(driver.find_elements_by_xpath(
         '//div[contains(@class, "card")]')) > 30)
     elements = browser.find_elements_by_xpath('//button')
