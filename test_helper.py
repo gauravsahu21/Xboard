@@ -35,11 +35,13 @@ def find_fist_accordian_btn_and_div(browser):
         WebDriverWait(browser, 10).until(lambda driver: len(driver.find_elements_by_xpath(
             '//div[contains(@class, "card")]')) > 30)
     except:
-        print("Logs in browser")
+        print("\n\nLogs in browser")
         for entry in browser.get_log("browser"):
             print(entry)
-        element = browser.find_elements(By.TAG_NAME, "html")[0]
-        print(element.get_attribute('innerHTML'))
+
+    element = browser.find_elements(By.TAG_NAME, "html")[0]
+    print("\n\nPageHTML\n")
+    print(element.get_attribute('innerHTML'))
     elements = browser.find_elements_by_xpath('//button')
     btn = elements[0]
     div_name = btn.get_attribute("data-target")
@@ -59,11 +61,12 @@ def load_xboard_page_and_wait(browser):
         WebDriverWait(browser, 10).until(
             lambda wd: len(wd.find_elements(By.CLASS_NAME, 'card')) > 30)
     except:
-        print("Logs in browser")
+        print("\n\nLogs in browser")
         for entry in browser.get_log("browser"):
             print(entry)
-        element = browser.find_elements(By.TAG_NAME, "html")[0]
-        print(element.get_attribute('innerHTML'))
+    element = browser.find_elements(By.TAG_NAME, "html")[0]
+    print("\n\nPageHTML\n")
+    print(element.get_attribute('innerHTML'))
 
 
 def get_courosal_element_ids(div_name):

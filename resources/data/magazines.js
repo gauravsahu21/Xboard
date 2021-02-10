@@ -4,6 +4,12 @@ magazines = [
   "https://flipboard.com/@thehindu/sportstarlive-rj3ttinvz.rss"
 ]
 
+/** Caution: Do not write your logic in this file.
+ * This file gets replaced during assessment with the original content that
+ * we have for assessment. If you write your code in this file, you will end up deleting it in the assessment.
+ * For Local testing, uncomment the below lines and you can test your code on local using test_main.py.
+ */
+
 // magazines = [
 //   "https://storage.googleapis.com/fullstack-assessment/coronavirus.rss",
 //   "https://storage.googleapis.com/fullstack-assessment/india-tech.rss",
