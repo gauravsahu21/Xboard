@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import os
 
-xboard_index_html = "file:///mnt/g/crio.do/userrepo/suhaib0900-me_buildout_xboard/index.html"
+# xboard_index_html = "file:///mnt/g/crio.do/userrepo/suhaib0900-me_buildout_xboard/index.html"
 xboard_index_html = "file://" + os.getenv("HTML_FILEPATH")
 
 def get_first_accordian_class(browser):
@@ -31,8 +31,13 @@ def get_first_accordian_class(browser):
 
 def find_fist_accordian_btn_and_div(browser):
     browser.get(xboard_index_html)
-    WebDriverWait(browser, 10).until(lambda driver: len(driver.find_elements_by_xpath(
-        '//div[contains(@class, "card")]')) > 30)
+    try:
+        WebDriverWait(browser, 10).until(lambda driver: len(driver.find_elements_by_xpath(
+            '//div[contains(@class, "card")]')) > 30)
+    except:
+        print("Logs in browser")
+        for entry in browser.get_log("browser"):
+            print(entry)
     elements = browser.find_elements_by_xpath('//button')
     btn = elements[0]
     div_name = btn.get_attribute("data-target")
@@ -48,9 +53,13 @@ def load_xboard_page_and_wait(browser):
     browser.get(xboard_index_html)
     # WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn')))
     print("wait until at least 30 cards are loaded")
-    WebDriverWait(browser, 10).until(
-        lambda wd: len(wd.find_elements(By.CLASS_NAME, 'card')) > 30
-    )
+    try:
+        WebDriverWait(browser, 10).until(
+            lambda wd: len(wd.find_elements(By.CLASS_NAME, 'card')) > 30)
+    except:
+        print("Logs in browser")
+        for entry in browser.get_log("browser"):
+            print(entry)
 
 
 def get_courosal_element_ids(div_name):

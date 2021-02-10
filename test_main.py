@@ -1,6 +1,9 @@
 import time
 import unittest
 from unittest import TestCase
+
+from selenium.webdriver import DesiredCapabilities
+
 from test_helper import get_first_accordian_class, find_fist_accordian_btn_and_div, \
     get_courosal_element_ids, find_all_accordian_btns, load_xboard_page_and_wait
 from functools import reduce
@@ -16,7 +19,11 @@ class Test_Main(TestCase):
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--disable-web-security")
         options.add_argument("--no-sandbox")
-        webdriver_chrome = webdriver.Chrome(options=options)
+
+        d = DesiredCapabilities.CHROME
+        d['loggingPrefs'] = {'browser': 'ALL'}
+
+        webdriver_chrome = webdriver.Chrome(options=options, desired_capabilities=d)
         return webdriver_chrome
 
     def test_first_carousel(self):
