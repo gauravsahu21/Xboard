@@ -46,7 +46,7 @@ def find_all_accordian_btns(browser):
 
 def load_xboard_page_and_wait(browser):
     browser.get(xboard_index_html)
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn')))
+    # WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn')))
     print("wait until at least 30 cards are loaded")
     WebDriverWait(browser, 10).until(
         lambda wd: len(wd.find_elements(By.CLASS_NAME, 'card')) > 30
