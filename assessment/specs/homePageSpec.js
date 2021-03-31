@@ -47,6 +47,42 @@ describe('Search', () => {
     homePage.firstAccordian().should("to.be.visible");
   });
 
+  it("Click On Carousel and make sure that it changes the image", () => {
+    homePage.firstAccordianButton().then((btn) => {
+      let dataTarget;
+      if (btn.attr("data-target")) {
+        dataTarget = btn.attr("data-target");
+      } else {
+        dataTarget = btn.attr("data-bs-target");
+      }
+      homePage.firstAccordianButton().click();
+      cy.wait(1000);
+      homePage.firstAccordianButton().click();
+      cy.wait(1000);
+      homePage.getElement(dataTarget).within(() => {
+        cy.get(".carousel-item.active img")
+          .its(0)
+          .then((img) => {
+            let src = img.attr("src");
+            cy.log(src).then(() => {
+              cy.get(".carousel-control-next-icon")
+                .its(0)
+                .invoke("css", "5px solid red");
+              cy.get(".carousel-control-next-icon").click();
+              cy.wait(1000);
+              cy.log(
+                "Try to get an element with .carousel class inside " +
+                  dataTarget
+              );
+              cy.get(".carousel-item.active img")
+                .its(0)
+                .invoke("attr", "src")
+                .should("not.to.be.equal", src);
+            });
+          });
+      });
+    });
+  });
 
   it("Verify that each carousel has 10 cards", () => {
     homePage.allAccordianButtons().each((btn) => {
