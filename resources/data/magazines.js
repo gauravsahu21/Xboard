@@ -11,8 +11,8 @@ magazines = [
  */
 
 // magazines = [
-//   "https://storage.googleapis.com/fullstack-assessment/coronavirus.rss",
-//   "https://storage.googleapis.com/fullstack-assessment/india-tech.rss",
-//   "https://storage.googleapis.com/fullstack-assessment/sports-star.rss"
-// ]
+//   "https://assessment-rss.s3.ap-south-1.amazonaws.com/coronavirus.rss",
+//   "https://assessment-rss.s3.ap-south-1.amazonaws.com/india-tech.rss",
+//   "https://assessment-rss.s3.ap-south-1.amazonaws.com/sports-star.rss",
+// ];
 

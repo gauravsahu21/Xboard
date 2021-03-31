@@ -44,7 +44,7 @@ describe('Search', () => {
       homePage.firstAccordian().should('to.be.visible');
     })
 
-    it.only('Click On Carousel and make sure that it changes the image', () => {
+    it('Click On Carousel and make sure that it changes the image', () => {
         homePage.firstAccordianButton().then(btn => {
             let dataTarget;
             if (btn.attr('data-target')) {
