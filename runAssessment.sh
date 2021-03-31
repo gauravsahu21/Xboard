@@ -26,7 +26,7 @@ fi
 cd $PWD && npm install http-server && nohup ./node_modules/http-server/bin/http-server -p 8081 &
 
 while ! netstat -tna | grep 'LISTEN\>' | grep -q $FE_PORT; do
-  echo "waiting for React application to start on port $FE_PORT"
+  echo "waiting for http server to start on port $FE_PORT"
   sleep 2 # time in seconds, tune it as needed
 done
 
