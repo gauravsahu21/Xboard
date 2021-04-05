@@ -1,7 +1,7 @@
 {
-  "name": "xflix-integ-tests",
+  "name": "xboard-integ-tests",
   "version": "1.0.0",
-  "description": "Integration tests for x-flix project",
+  "description": "Integration tests for XBoard git project",
   "main": "index.js",
   "scripts": {
     "cy": "cypress",
