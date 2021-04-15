@@ -1,6 +1,7 @@
 .vscode
 /node_modules/
 /assessment/node_modules/
+/assessment/node_modules
 /assessment/cypress/support/
 /assessment/cypress/videos/
 /assessment/screenshots/
