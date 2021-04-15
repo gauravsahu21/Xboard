@@ -1,4 +1,5 @@
 .vscode
+node_modules
 /node_modules/
 /assessment/node_modules/
 /assessment/node_modules
@@ -7,8 +8,6 @@
 /assessment/screenshots/
 /assessment/support/
 /assessment/test-results.xml
-/assessment/package-lock.json
-package-lock.json
 nohup.out
 .idea/
 __pycache__/
