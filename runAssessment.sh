@@ -23,7 +23,7 @@ then
   echo "Killed application running on $FE_PORT"
 fi
 
-cd $PWD && pnpm install http-server && nohup ./node_modules/http-server/bin/http-server -p 8081 &
+cd $PWD && npm install http-server && nohup ./node_modules/http-server/bin/http-server -p 8081 &
 
 while ! netstat -tna | grep 'LISTEN\>' | grep -q $FE_PORT; do
   echo "waiting for http server to start on port $FE_PORT"
@@ -31,5 +31,5 @@ while ! netstat -tna | grep 'LISTEN\>' | grep -q $FE_PORT; do
 done
 
 # 3. Run assessment
-cd $PWD/assessment && pnpm install && npm run test
+cd $PWD/assessment && npm install && npm run test
 pkill http-server
