@@ -55,10 +55,10 @@ describe('Search', () => {
       } else {
         dataTarget = btn.attr("data-bs-target");
       }
-      homePage.firstAccordianButton().click();
-      cy.wait(1000);
-      homePage.firstAccordianButton().click();
-      cy.wait(1000);
+      // homePage.firstAccordianButton().click();
+      // cy.wait(1000);
+      // homePage.firstAccordianButton().click();
+      // cy.wait(1000);
       homePage.getElement(dataTarget).within(() => {
         cy.get(".carousel-item.active img")
           .its(0)
