@@ -1,4 +1,4 @@
- setup for pnpm to pickup npm in script
+# setup for pnpm to pickup npm in script
  shopt -s expand_aliases
  . ~/.bash_aliases
 
