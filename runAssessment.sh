@@ -1,12 +1,13 @@
 # setup for pnpm to pickup npm in script
- shopt -s expand_aliases
- . ~/.bash_aliases
-
-FE_PORT=8082
+shopt -s expand_aliases
+. ~/.bash_aliases
 
 # Override baseUrl in cypress.json
 # https://docs.cypress.io/guides/references/configuration.html#Environment-Variables
-export CYPRESS_BASE_URL="http://localhost:$FE_PORT"
+export CYPRESS_BASE_URL=http://localhost:8081
+
+FE_PORT=8081
+FE_NODE_DIR="$PWD"
 
 # exit on non-zero return code
 set -e
@@ -25,7 +26,7 @@ then
   echo "Killed application running on $FE_PORT"
 fi
 
-cd $PWD && npm install http-server && nohup ./node_modules/http-server/bin/http-server -p $FE_PORT &
+cd $PWD && npm install http-server && nohup ./node_modules/http-server/bin/http-server -p 8081 &
 
 while ! netstat -tna | grep 'LISTEN\>' | grep -q $FE_PORT; do
   echo "waiting for http server to start on port $FE_PORT"
